@@ -3,6 +3,11 @@ import axios from 'axios';
 
 const Ctx = createContext(null);
 
+// Configure axios for production
+if (process.env.NODE_ENV === 'production') {
+  axios.defaults.baseURL = 'https://ebf-backend.onrender.com';
+}
+
 export function AuthProvider({ children }) {
   const [user,    setUser]    = useState(null);
   const [loading, setLoading] = useState(true);
